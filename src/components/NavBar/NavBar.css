@@ -1,0 +1,39 @@
+.NavBar {
+    display: flex;
+    background: transparent;
+    width: 100%;
+    justify-content: space-around;
+    background: white;
+}
+
+.LeftNav{
+    display: flex;
+    float: left;
+    align-content: flex-start;
+    align-items: center;
+}
+
+.CenterNav{
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.RightNav{
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
+    align-items: center;
+}
+
+.botonLogin{
+    margin: 10px;
+}
+
+.botonMenu{
+    margin: 20px;
+}
+
+.App-logo2{
+    margin: 20px;
+}
