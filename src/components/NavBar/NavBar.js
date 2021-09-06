@@ -1,5 +1,6 @@
 import './NavBar.css'
 import logo2 from '../../Logo.png'
+import CartWidget from '../CartWidget/CartWidget'
 
 const NavBar = () => {
     return (
@@ -14,11 +15,12 @@ const NavBar = () => {
                 <button className='botonMenu'>Conctact</button>
             </ul>
             <div className='RightNav'>
-                <form>
+                <form className='itemForm'>
                     <input placeholder='Search' aria-label='Search'></input>
                     <button type='submit'>Search</button>
                 </form>
                 <button className='botonLogin'>Login</button>
+                <CartWidget/>
             </div>
         </nav>
     )

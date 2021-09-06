@@ -26,6 +26,11 @@
     align-items: center;
 }
 
+.itemForm{
+    display: flex;
+    align-items: center;
+}
+
 .botonLogin{
     margin: 10px;
 }
