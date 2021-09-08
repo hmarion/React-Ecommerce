@@ -1,0 +1,15 @@
+.item {
+    width: 15%;
+    border: double;
+}
+
+.contador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+}
+
+.contador button {
+    margin: 5px;
+}
