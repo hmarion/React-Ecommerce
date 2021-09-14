@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/NavBar/NavBar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
-import ItemCount from './components/ItemCount/ItemCount'
 
 const App = () => {
 
@@ -12,11 +11,10 @@ const App = () => {
         <NavBar/>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Desafio Clase 5 - Contador con boton
+          Desafio Clase 6 - Catalogo con Maps y promises
         </p>
       </header>
       <ItemListContainer greetings='Welcome to TonicStore!!!'/>
-      <ItemCount/>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 .item {
-    width: 15%;
-    border: double;
+    margin: 10%
 }
 
 .contador {
@@ -12,4 +11,20 @@
 
 .contador button {
     margin: 5px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.buttonRest {
+    color: red;
+}
+
+.buttonPlus {
+    color: green;
+}
+
+.addCart{
+    background-color: orange;
+    color: white;
 }

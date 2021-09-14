@@ -1,0 +1,7 @@
+.listado {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin: 10%;
+    height: 100%;
+}

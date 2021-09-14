@@ -1,0 +1,13 @@
+.itemCard {
+    border: double;
+    width: 25rem;
+    margin: 1rem;
+}
+
+.title {
+    text-decoration: underline;
+}
+
+.price {
+    font-weight: bold;
+}

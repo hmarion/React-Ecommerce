@@ -1,10 +1,14 @@
+import ItemList from '../ItemList/ItemList';
 import './ItemListContainer.css';
 
 const ItemListContainer = (props) => {
     return (
-        <p className="text">
-            {props.greetings}
-        </p>
+        <div>
+            <p className="text">
+                {props.greetings}
+            </p>
+            <ItemList/>
+        </div>
     )
 }
 
