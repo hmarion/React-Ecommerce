@@ -4,6 +4,7 @@
     width: 100%;
     justify-content: space-around;
     background: white;
+    align-items: center;
 }
 
 .LeftNav{
@@ -13,10 +14,12 @@
     align-items: center;
 }
 
-.CenterNav{
-    display: flex;
-    position: relative;
-    align-items: center;
+.currectCategory {
+    font-weight: bold;
+}
+
+.link {
+    text-decoration: none;    
 }
 
 .RightNav{

@@ -1,24 +1,39 @@
-import logo from './logo.svg';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar/NavBar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import Contact from './views/Contact';
 
 const App = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <NavBar/>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Desafio Clase 7 - Detalle del producto
-        </p>
+      <header>
+        <BrowserRouter>
+          <NavBar/>
+          <Switch>
+            <Route exact path="/">
+              <ItemListContainer />
+            </Route>
+            <Route path="/home">
+              <ItemListContainer />
+            </Route>
+            <Route path="/item">
+              <ItemDetailContainer />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/category/:category">
+              <ItemListContainer />
+            </Route>
+            <Route path="/item/:id">
+              <ItemDetailContainer />
+            </Route>
+          </Switch>
+        </BrowserRouter>
       </header>
-      <ItemListContainer greetings='Welcome to TonicStore!!!'/>
-      <section>
-        <ItemDetailContainer />
-      </section>
     </div>
   );
 }

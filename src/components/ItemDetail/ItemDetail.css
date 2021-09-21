@@ -13,10 +13,29 @@
     text-align: center;
 }
 
+.image {
+    width: 200px;
+    height: 200px;
+}
+
+.detailItem {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .item{
-    margin: 10%
+    margin: 5%
 }
 
 h1 {
     font-size: 300%;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
 }

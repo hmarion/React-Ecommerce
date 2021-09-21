@@ -1,26 +1,26 @@
 import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css'
+import logo from '../../logo.svg';
 
-const ItemDetail = ( props ) => {
+const ItemDetail = ({ item }) => {
+    if(!item) {
+        return <img src={logo} className="App-logo" alt="logo" />
+    }
+    
     return (
         <div>
-            <h1>{props.title}</h1>
+            <h1>{item?.title}</h1>
             <section className="detail">
                 <div>
-                    <img src={props.pictureUrl} alt=''></img>
-                    <p>Price: ${props.price}</p>
-                    <p>Stock: {props.stock}</p>
+                    <img className="image" src={item?.pictureUrl} alt={item?.title}></img>
                 </div>
-                <div>
-                    <p>
-                        Nina Q es la primer agua tónica premium concebida en la ciudad de Rosario, 
-                        pensada para la coctelería. Sus sabores cítricos e intenso amargor la hacen única, 
-                        irrepetible y disruptiva. Se unen las persistentes y duraderas burbujas que 
-                        realzan el sabor de todas las bebidas que estén dispuestas acompañarla.
-                    </p>
+                <div className="detailItem">
+                    <p>Price: ${item?.price}</p>
+                    <p>Stock: {item?.stock}</p>
+                    <p>Category: {item?.category}</p>
                 </div>
             </section>
-            <ItemCount stock={props.stock} />
+            <ItemCount stock={item?.stock} />
         </div>
     );
 }

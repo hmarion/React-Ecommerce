@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Item from '../Item/Item';
-import image1 from '../../ninaqHibiscus.jpg';
-import image2 from '../../AT_pb_1s.jpg';
-import image3 from '../../santaquina.jpg';
-import image4 from '../../gin-ciervo-del-pantano.jpg';
-import './ItemList.css'
+import './ItemList.css';
 
 const productos = [
-    {id: '1', title: 'Agua Tonica Nina', price: '209', pictureUrl: {image1}, stock: 23},
-    {id: '2', title: 'Agua Tonica P Blanco', price: '163', pictureUrl: {image2}, stock: 5},
-    {id: '3', title: 'Agua Tonica Sta Quina', price: '249', pictureUrl: {image3}, stock: 10},
-    {id: '4', title: 'Gin Ciervo', price: '1199', pictureUrl: {image4}, stock: 8}
+    {id: '1', title: 'Agua Tonica Nina', price: '209', pictureUrl: './images/ninaqHibiscus.jpg', stock: 23, category: 'tonicas'},
+    {id: '2', title: 'Agua Tonica P Blanco', price: '163', pictureUrl: './images/AT_pb_1s.jpg', stock: 5, category: 'tonicas'},
+    {id: '3', title: 'Agua Tonica Sta Quina', price: '249', pictureUrl: './images/santaquina.jpg', stock: 10, category: 'tonicas'},
+    {id: '4', title: 'Gin Ciervo', price: '1199', pictureUrl: './images/gin-ciervo-del-pantano.jpg', stock: 8, category: 'gin'},
+    {id: '5', title: 'Combo Mix TonicStore + Príncipe de los apóstoles', price: '2039', pictureUrl: './images/combo1.jpg', stock: 3, category: 'combos'}
 ]
 
 function getList(){
@@ -21,19 +19,31 @@ function getList(){
 
 const ItemList = () => {
     const [listBebidas, setListBebidas] = useState([])
-    
+    const { category } = useParams()
+
+
     useEffect(() =>  {
         const list = getList()
 
-        list.then(list => {
-            setListBebidas(list)
+        if(!category){
+            list.then(list => {
+                setListBebidas(list)
+            })
+        }else {
+            list.then(list => {
+                const bebidas = list.filter(productos => productos.category === category)
+                setListBebidas(bebidas)
+            })
+        }
+        return (() => {
+            setListBebidas(undefined)
         })
-    }, [])
-    
+        
+    }, [category])
 
     return (
         <div className="listado">
-            { listBebidas.map (bebidas =>  <Item key={bebidas.id} title={bebidas.title} img={bebidas.pictureUrl} price={bebidas.price} stock={bebidas.stock}/>) }
+            { listBebidas?.map (bebidas =>  <Item key={bebidas.id} item={bebidas}/>) }
         </div>
     );
 }

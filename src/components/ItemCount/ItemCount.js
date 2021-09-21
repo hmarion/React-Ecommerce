@@ -3,7 +3,6 @@ import './ItemCount.css';
 
 const ItemCount = ( props ) => {
     const [count, setCount] = useState(0);
-    const [add, setAdd] = useState(0);
     
     const restarCount = () => {
         if(count > 0){
@@ -24,7 +23,7 @@ const ItemCount = ( props ) => {
                 <p>{count}</p>
                 <button className="buttonPlus" onClick={sumarCount}>+</button>
             </div>
-            <button className="addCart" onClick={() => count > 0 ? setAdd(count + " Items") : setAdd("")}>Agregar al Carrito</button>
+            <button className="addCart">Agregar al Carrito</button>
         </div>
     )
 }
