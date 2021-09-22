@@ -1,11 +1,8 @@
 import ItemCount from '../ItemCount/ItemCount';
-import './ItemDetail.css'
-import logo from '../../logo.svg';
+import './ItemDetail.css';
+
 
 const ItemDetail = ({ item }) => {
-    if(!item) {
-        return <img src={logo} className="App-logo" alt="logo" />
-    }
     
     return (
         <div>

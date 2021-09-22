@@ -5,14 +5,14 @@ import './Item.css'
 const Item = ({ item }) => {
 
     return (
-        <NavLink to={`/item/${item.id}`}>
-            <div className="itemCard">
+        <div className="itemCard">
+            <NavLink to={`/item/${item.id}`}>
                 <p className="title">{item?.title}</p>
                 <img className="image" src={item?.pictureUrl} alt={item?.title}></img>
                 <p className="price">${item?.price}</p>
-                <ItemCount stock={item?.stock}/>
-            </div>
-        </NavLink>
+            </NavLink>
+            <ItemCount stock={item?.stock}/>
+        </div>
     );
 }
 

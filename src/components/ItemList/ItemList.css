@@ -1,6 +1,7 @@
 .listado {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     text-align: center;
     margin: 10%;
     height: 100%;

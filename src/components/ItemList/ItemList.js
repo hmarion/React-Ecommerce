@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Item from '../Item/Item';
 import './ItemList.css';
+import logo from '../../logo.svg';
 
 const productos = [
     {id: '1', title: 'Agua Tonica Nina', price: '209', pictureUrl: './images/ninaqHibiscus.jpg', stock: 23, category: 'tonicas'},
@@ -20,6 +21,7 @@ function getList(){
 const ItemList = () => {
     const [listBebidas, setListBebidas] = useState([])
     const { category } = useParams()
+    const [bandera, setBandera] = useState(false)
 
 
     useEffect(() =>  {
@@ -28,22 +30,25 @@ const ItemList = () => {
         if(!category){
             list.then(list => {
                 setListBebidas(list)
+                setBandera(true)
             })
         }else {
             list.then(list => {
                 const bebidas = list.filter(productos => productos.category === category)
                 setListBebidas(bebidas)
+                setBandera(true)
             })
         }
         return (() => {
             setListBebidas(undefined)
+            setBandera(false)
         })
         
     }, [category])
 
     return (
         <div className="listado">
-            { listBebidas?.map (bebidas =>  <Item key={bebidas.id} item={bebidas}/>) }
+            {bandera ? listBebidas?.map (bebidas =>  <Item key={bebidas.id} item={bebidas}/>) : <img src={logo} className="App-logo" alt="logo" />}
         </div>
     );
 }

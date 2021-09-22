@@ -19,9 +19,6 @@ const App = () => {
             <Route path="/home">
               <ItemListContainer />
             </Route>
-            <Route path="/item">
-              <ItemDetailContainer />
-            </Route>
             <Route path="/contact">
               <Contact />
             </Route>
