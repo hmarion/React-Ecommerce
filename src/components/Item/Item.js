@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import ItemCount from '../ItemCount/ItemCount';
 import './Item.css'
 
 const Item = ({ item }) => {
@@ -11,7 +10,6 @@ const Item = ({ item }) => {
                 <img className="image" src={item?.pictureUrl} alt={item?.title}></img>
                 <p className="price">${item?.price}</p>
             </NavLink>
-            <ItemCount stock={item?.stock}/>
         </div>
     );
 }

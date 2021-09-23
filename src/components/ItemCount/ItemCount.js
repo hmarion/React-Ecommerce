@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './ItemCount.css';
 
-const ItemCount = ( props ) => {
+const ItemCount = ({ stock, onConfirm, bandera }) => {
     const [count, setCount] = useState(0);
     
     const restarCount = () => {
@@ -11,20 +12,26 @@ const ItemCount = ( props ) => {
     }
 
     const sumarCount = () => {
-        if(count < props.stock){
+        if(count < stock){
             setCount(count + 1)
         }
     }
 
+
     return (
-        <div className="item">
-            <div className="contador">
-                <button className="buttonRest" onClick={restarCount}>-</button>
-                <p>{count}</p>
-                <button className="buttonPlus" onClick={sumarCount}>+</button>
-            </div>
-            <button className="addCart">Agregar al Carrito</button>
-        </div>
+        <>
+            { bandera ? 
+                <Link to="/cart"><button className="addCart">Finalizar</button></Link> : 
+                <div className="item">
+                    <div className="contador">
+                        <button className="buttonRest" onClick={restarCount}>-</button>
+                        <p>{count}</p>
+                        <button className="buttonPlus" onClick={sumarCount}>+</button>
+                    </div>    
+                    <button className="addCart" onClick={() => onConfirm(count)}>Agregar al Carrito</button> 
+                </div>
+            }
+        </>
     )
 }
 
