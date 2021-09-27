@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './ItemCount.css';
+import CartContext from "../../context/CartContext";
 
-const ItemCount = ({ stock, onConfirm, bandera }) => {
+const ItemCount = ({ item, stock, bandera }) => {
     const [count, setCount] = useState(0);
+    const { addItem } = useContext(CartContext)
+
     
     const restarCount = () => {
         if(count > 0){
@@ -17,6 +20,9 @@ const ItemCount = ({ stock, onConfirm, bandera }) => {
         }
     }
 
+    const newItem = () => {
+        addItem(item, count)
+    }
 
     return (
         <>
@@ -28,7 +34,7 @@ const ItemCount = ({ stock, onConfirm, bandera }) => {
                         <p>{count}</p>
                         <button className="buttonPlus" onClick={sumarCount}>+</button>
                     </div>    
-                    <button className="addCart" onClick={() => onConfirm(count)}>Agregar al Carrito</button> 
+                    <button className="addCart" onClick={newItem}>Agregar al Carrito</button> 
                 </div>
             }
         </>

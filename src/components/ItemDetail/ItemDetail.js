@@ -6,10 +6,6 @@ import './ItemDetail.css';
 const ItemDetail = ({ item }) => {
     const [itemQuantity, setItemQuantity] = useState(0)
     const [banderaItem, setBanderaItem] = useState(false)
-    const addItem = (numberItem) => {
-        console.log(numberItem);
-        setItemQuantity(numberItem)
-    }
 
     useEffect(() => {
         if(itemQuantity > 0){
@@ -33,7 +29,7 @@ const ItemDetail = ({ item }) => {
                     <p>Category: {item?.category}</p>
                 </div>
             </section>
-            <ItemCount stock={item?.stock} onConfirm={addItem} bandera={banderaItem}/>
+            <ItemCount item={item} stock={item?.stock} bandera={banderaItem}/>
         </div>
     );
 }
