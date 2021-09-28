@@ -1,37 +1,50 @@
 import { createContext, useState } from "react"
 
-const CartContext = createContext()
+export const CartContext = createContext()
 
-export const AddItemCart = ({children}) => {
-    const [listItem, setListItem]   = useState([])
+export const CartContextProvider = ({ children }) => {
+    const [listItem, setListItem]   = useState()
 
     const addItem = (item1, quantity) => {
-        const item = {
-            ...item1,
-            quantity: quantity
-        }
-        setListItem([...listItem, item])
-        console.log(listItem);
+        if(!isInCart(item1.id)){
+            const item = {
+                ...item1,
+                quantity: quantity
+            }
+            if(listItem === undefined){
+                setListItem([item])
+            }else{
+                setListItem([...listItem, item])
+            }   
+        }else{
+            console.log("El producto ya se encuentra registrado");
+        }      
     }
 
-    const removeItem = (itemid) => {
-
+    const removeItem = (itemId) => {
+        const newList = listItem.filter((item) => item.id !== itemId);
+        setListItem(newList)
     }
 
     const clear = () => {
-        setListItem([])
+        setListItem(undefined)
     }
 
     const isInCart = (id) => {
-        const item = listItem.filter(productos => productos.id === id)
-        if(item === 'undefined'){
+        if(listItem === undefined){
             return false
         }else{
-            return true
+            const item = listItem.find(productos => productos.id === id)
+            if(item === undefined){
+                return false
+            }else{
+                return true
+            }
         }
     }
+
     return(
-        <CartContext.Provider valule={{
+        <CartContext.Provider value={{
             listItem,
             addItem,
             removeItem,

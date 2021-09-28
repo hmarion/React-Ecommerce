@@ -4,7 +4,7 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import Contact from './views/Contact';
 import Cart from './components/Cart/Cart';
-import CartContext from './context/CartContext'
+import { CartContextProvider } from './context/CartContext'
 import './App.css';
 
 
@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div className="App">
       <header>
-        <CartContext.Provider value={CartContext}>
+        <CartContextProvider>
           <BrowserRouter>
             <NavBar/>
             <Switch>
@@ -37,7 +37,7 @@ const App = () => {
               </Route>
             </Switch>
           </BrowserRouter>
-        </CartContext.Provider>
+        </CartContextProvider>
       </header>
     </div>
   );

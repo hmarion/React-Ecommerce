@@ -1,0 +1,18 @@
+.itemCard {
+    border: double;
+    width: 20rem;
+    margin: 1rem;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+}
+
+.title {
+    text-decoration: underline;
+}
+
+.price {
+    font-weight: bold;
+}

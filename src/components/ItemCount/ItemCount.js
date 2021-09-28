@@ -1,12 +1,12 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './ItemCount.css';
-import CartContext from "../../context/CartContext";
+import  CartContextProvider from "../../context/CartContext";
 
-const ItemCount = ({ item, stock, bandera }) => {
+const ItemCount = ({ item, stock }) => {
     const [count, setCount] = useState(0);
-    const { addItem } = useContext(CartContext)
-
+    const [bandera, setBandera] = useState(false)
+    const { addItem, isInCart, listItem } = useContext(CartContextProvider);
     
     const restarCount = () => {
         if(count > 0){
@@ -23,6 +23,23 @@ const ItemCount = ({ item, stock, bandera }) => {
     const newItem = () => {
         addItem(item, count)
     }
+
+    const itemConsult = () => {
+        return isInCart(item.id)
+    }
+
+    useEffect(() =>  {
+
+        if(listItem === undefined){
+            setBandera(false)
+        }else {
+            setBandera(itemConsult)
+        }
+        return (() => {
+            setBandera(false)
+        })
+        
+    }, [listItem])
 
     return (
         <>
