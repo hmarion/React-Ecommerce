@@ -13,7 +13,7 @@ const ItemCart = ({ item }) => {
         <div className="itemCard">
             <p className="title">{item?.title}</p>
             <img className="image" src={item?.pictureUrl} alt={item?.title}></img>
-            <p className="quantity">${item?.quantity}</p>
+            <p className="quantity">Quantity: {item?.quantity}</p>
             <button className="addCart" onClick={remove}>Eliminar Item</button>
         </div>
     );

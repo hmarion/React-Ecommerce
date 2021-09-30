@@ -21,9 +21,33 @@ export const CartContextProvider = ({ children }) => {
         }      
     }
 
+    const getQuantity = () => {
+        let count = 0
+        if(!(listItem === undefined)){
+            listItem.forEach(item => {
+                count = count + item.quantity
+            });
+        }
+        return count
+    }
+
+    const getTotalPrice = () => {
+        let price = 0
+        if(!(listItem === undefined)){
+            listItem.forEach(item => {
+                price = price + (item.price * item.quantity)
+            });
+        }
+        return price
+    }
+
     const removeItem = (itemId) => {
         const newList = listItem.filter((item) => item.id !== itemId);
-        setListItem(newList)
+        if(getQuantity() === 0){
+            setListItem(undefined)    
+        }else{
+            setListItem(newList)
+        }        
     }
 
     const clear = () => {
@@ -49,7 +73,9 @@ export const CartContextProvider = ({ children }) => {
             addItem,
             removeItem,
             clear,
-            isInCart
+            isInCart,
+            getQuantity,
+            getTotalPrice
         }}>
             {children}
         </CartContext.Provider>
