@@ -16,7 +16,7 @@ const ItemDetail = ({ item }) => {
                     <p>Category: {item?.category}</p>
                 </div>
             </section>
-            <ItemCount item={item} stock={item?.stock}/>
+            <ItemCount item={item} stock={item?.stock} button="Agregar al Carrito"/>
         </div>
     );
 }

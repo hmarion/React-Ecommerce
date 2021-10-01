@@ -5,29 +5,19 @@ import ItemCart from "../ItemCart/ItemCart";
 
 const Cart = () => {
     const { listItem, clear, getTotalPrice } = useContext(CartContextProvider);
-    const [bandera, setBandera] = useState(false)
     const [price, setPrice] = useState(0)
 
     useEffect(() =>  {
         setPrice(getTotalPrice())
-
-        if(listItem === undefined){
-            setBandera(false)
-        }else {
-            setBandera(true)
-        }
-        return (() => {
-            setBandera(false)
-        })
-        
-    }, [listItem])
+    }, [getTotalPrice])
 
     return (
         <>  
-            { bandera ? 
+            { price !== 0 ? 
                 <>
                     <h1>Total de la Compra: ${price}</h1>
                     <button className="addCart" onClick={clear}>Vaciar Carrito</button>
+                    <NavLink to="/"><button className="addCart">Seguir comprando</button></NavLink>
                     <div className="listado">
                         {listItem?.map (bebidas =>  <ItemCart key={bebidas.id} item={bebidas}/>) }
                     </div>

@@ -6,19 +6,27 @@ export const CartContextProvider = ({ children }) => {
     const [listItem, setListItem]   = useState()
 
     const addItem = (item1, quantity) => {
+        const item = {
+            ...item1,
+            quantity: quantity
+        }
+        
         if(!isInCart(item1.id)){
-            const item = {
-                ...item1,
-                quantity: quantity
-            }
             if(listItem === undefined){
                 setListItem([item])
             }else{
                 setListItem([...listItem, item])
             }   
         }else{
-            console.log("El producto ya se encuentra registrado");
-        }      
+            const newList = listItem.map(producto => {
+                if(producto.id === item1.id){
+                    return item
+                }else{
+                    return producto
+                }
+            })
+            setListItem(newList)
+        }
     }
 
     const getQuantity = () => {

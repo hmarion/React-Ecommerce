@@ -1,12 +1,11 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './ItemCount.css';
 import  CartContextProvider from "../../context/CartContext";
 
-const ItemCount = ({ item, stock }) => {
+const ItemCount = ({ item, stock, button }) => {
     const [count, setCount] = useState(0);
-    const [bandera, setBandera] = useState(false)
-    const { addItem, isInCart, listItem } = useContext(CartContextProvider);
+    const { addItem, isInCart } = useContext(CartContextProvider);
     
     const restarCount = () => {
         if(count > 0){
@@ -24,37 +23,19 @@ const ItemCount = ({ item, stock }) => {
         addItem(item, count)
     }
 
-    const itemConsult = () => {
-        return isInCart(item.id)
+    if(isInCart(item.id) && button==="Agregar al Carrito"){
+        return <Link to="/cart"><button className="addCart">Finalizar</button></Link>
     }
 
-    useEffect(() =>  {
-
-        if(listItem === undefined){
-            setBandera(false)
-        }else {
-            setBandera(itemConsult)
-        }
-        return (() => {
-            setBandera(false)
-        })
-        
-    }, [listItem])
-
     return (
-        <>
-            { bandera ? 
-                <Link to="/cart"><button className="addCart">Finalizar</button></Link> : 
-                <div className="item">
-                    <div className="contador">
-                        <button className="buttonRest" onClick={restarCount}>-</button>
-                        <p>{count}</p>
-                        <button className="buttonPlus" onClick={sumarCount}>+</button>
-                    </div>    
-                    <button className="addCart" onClick={newItem}>Agregar al Carrito</button> 
-                </div>
-            }
-        </>
+        <div className="item">
+            <div className="contador">
+                <button className="buttonRest" onClick={restarCount}>-</button>
+                <p>{count}</p>
+                <button className="buttonPlus" onClick={sumarCount}>+</button>
+            </div>    
+            <button className="addCart" onClick={newItem}>{button}</button> 
+        </div>
     )
 }
 

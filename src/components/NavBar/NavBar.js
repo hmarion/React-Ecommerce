@@ -2,8 +2,15 @@ import { Link, NavLink } from 'react-router-dom'
 import './NavBar.css'
 import logo2 from '../../Logo.png'
 import CartWidget from '../CartWidget/CartWidget'
+import CartContextProvider from "../../context/CartContext";
+import { useContext, useEffect } from 'react';
 
 const NavBar = () => {
+    const { getQuantity } = useContext(CartContextProvider);
+
+    useEffect(() =>  {
+        getQuantity()
+    }, [getQuantity])
 
     return (
         <nav className='NavBar'>
@@ -19,7 +26,7 @@ const NavBar = () => {
                     <button type='submit'>Search</button>
                 </form>
                 <button className='botonLogin'>Login</button>
-                <CartWidget/>
+                {getQuantity() > 0 ? <CartWidget/> : ''}
             </div>
         </nav>
     )
