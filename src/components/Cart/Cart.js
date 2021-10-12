@@ -42,7 +42,7 @@ const Cart = () => {
         if(outOfStock.length === 0) {
             addDoc(collection(db, 'orders'), order).then(DocumentSnapshot => {
                 batch.commit().then(() => { 
-                    console.log("La compra se realizo con exito con el id ", DocumentSnapshot.id);
+                    alert("La compra se realizo con exito con el id " + DocumentSnapshot.id);
                 })
             }).catch((err) => {
                 console.log("No se pudo ejecutar la compra");
